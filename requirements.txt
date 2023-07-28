@@ -5,3 +5,4 @@ streamlit==1.11.1
 xgboost==1.7.3
 shap==0.41.0
 NumPy==1.23.5
+numba==0.56.4
