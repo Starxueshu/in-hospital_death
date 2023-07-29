@@ -3,6 +3,7 @@
 import joblib as jl
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 import shap
 #import matplotlib.pyplot as plt
 #import numpy as np
@@ -85,9 +86,9 @@ if st.button("Submit"):
     shap.initjs()
     #image = shap.plots.force(shap_value)
     #image = shap.plots.bar(shap_value)
+    st.pyplot(shap.plots.waterfall(shap_value[0]))
     st.pyplot(shap.plots.bar(shap_value[0],matplotlib=True))
-    st.pyplot(shap.plots.force(shaps_values[0],matplotlib=True))
-    st.pyplot(shap.plots.waterfall(shap_value[0],matplotlib=True))
+    st.pyplot(shap.plots.force(shaps_values[0]))
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.subheader('Model information')
