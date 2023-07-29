@@ -85,8 +85,8 @@ if st.button("Submit"):
     shap.initjs()
     #image = shap.plots.force(shap_value)
     #image = shap.plots.bar(shap_value)
-    image = shap.plots.waterfall(shap_value[0])
     fig, image = plt.subplots()
+    image = shap.plots.waterfall(shap_value[0])
     st.pyplot(fig)
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
