@@ -83,7 +83,7 @@ if st.button("Submit"):
     shap_value = explainer(x)
     #st.text(shap_value)
 
-    shap.initjs()
+    #shap.initjs()
     #image = shap.plots.force(shap_value)
     #image = shap.plots.bar(shap_value)
     #st.pyplot(shap.plots.waterfall(shap_value[0]))
