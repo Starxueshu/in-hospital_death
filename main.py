@@ -79,7 +79,7 @@ if st.button("Submit"):
                              "Cancer"]]
     y_train = y_train0.Deathinhospital
     model = rf_clf.fit(data_train_X, y_train)
-    explainer = shap.Explainer(model)
+    explainer = shap.TreeExplainer(model)
     shap_value = explainer(x)
     #st.text(shap_value)
 
