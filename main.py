@@ -19,24 +19,24 @@ Sex = st.sidebar.selectbox("Sex", ("Male", "Female"))
 Fracture = st.sidebar.selectbox("Fracture type", ("Femoral neck fracture", "Intertrochanteric fracture"))
 Operation = st.sidebar.selectbox("Operation", ("Hip joint replacement", "Internal fixation"))
 Comorbidities = st.sidebar.selectbox("Number of comorbidities", ("0", "1", "2", "≧3"))
-Coronarydisease = st.sidebar.selectbox("Coronary heart disease", ("No", "Yes"))
-Cerebrovasculardisease = st.sidebar.selectbox("Cerebrovascular disease", ("No", "Yes"))
-Heartfailure = st.sidebar.selectbox("Heart failure", ("No", "Yes"))
-Renalfailure = st.sidebar.selectbox("Renal failure", ("No", "Yes"))
-Nephroticsyndrome = st.sidebar.selectbox("Nephrotic syndrome", ("No", "Yes"))
-Respiratorysystemdisease = st.sidebar.selectbox("Respiratory system disease", ("No", "Yes"))
-Gastrointestinalbleeding = st.sidebar.selectbox("Gastrointestinal bleeding", ("No", "Yes"))
-Gastrointestinalulcer = st.sidebar.selectbox("Gastrointestinal ulcer", ("No", "Yes"))
-Liverfailure = st.sidebar.selectbox("Liver failure", ("No", "Yes"))
-Cirrhosis = st.sidebar.selectbox("Cirrhosis", ("No", "Yes"))
-Diabetes = st.sidebar.selectbox("Diabetes", ("No", "Yes"))
-Cancer = st.sidebar.selectbox("Cancer", ("No", "Yes"))
+#Coronarydisease = st.sidebar.selectbox("Coronary heart disease", ("No", "Yes"))
+#Cerebrovasculardisease = st.sidebar.selectbox("Cerebrovascular disease", ("No", "Yes"))
+#Heartfailure = st.sidebar.selectbox("Heart failure", ("No", "Yes"))
+#Renalfailure = st.sidebar.selectbox("Renal failure", ("No", "Yes"))
+#Nephroticsyndrome = st.sidebar.selectbox("Nephrotic syndrome", ("No", "Yes"))
+#Respiratorysystemdisease = st.sidebar.selectbox("Respiratory system disease", ("No", "Yes"))
+#Gastrointestinalbleeding = st.sidebar.selectbox("Gastrointestinal bleeding", ("No", "Yes"))
+#Gastrointestinalulcer = st.sidebar.selectbox("Gastrointestinal ulcer", ("No", "Yes"))
+#Liverfailure = st.sidebar.selectbox("Liver failure", ("No", "Yes"))
+#Cirrhosis = st.sidebar.selectbox("Cirrhosis", ("No", "Yes"))
+#Diabetes = st.sidebar.selectbox("Diabetes", ("No", "Yes"))
+#Cancer = st.sidebar.selectbox("Cancer", ("No", "Yes"))
 
 
 if st.button("Submit"):
     rf_clf = jl.load("Xgbc_clf_final_round-webagain.pkl")
-    x = pd.DataFrame([[Age, Sex, Fracture, Operation, Comorbidities, Coronarydisease, Cerebrovasculardisease, Heartfailure, Renalfailure, Nephroticsyndrome, Respiratorysystemdisease, Gastrointestinalbleeding, Gastrointestinalulcer, Liverfailure, Cirrhosis, Diabetes, Cancer]],
-                     columns=["Age", "Sex", "Fracture", "Operation", "Comorbidities", "Coronarydisease", "Cerebrovasculardisease", "Heartfailure", "Renalfailure", "Nephroticsyndrome", "Respiratorysystemdisease", "Gastrointestinalbleeding", "Gastrointestinalulcer", "Liverfailure", "Cirrhosis", "Diabetes", "Cancer"])
+    x = pd.DataFrame([[Age, Sex, Fracture, Operation, Comorbidities]],
+                     columns=["Age", "Sex", "Fracture", "Operation", "Comorbidities"])
     x = x.replace(["60-69", "70-79", "80-89", "90-100", ">100"], [6, 7, 8, 9, 10])
     x = x.replace(["Male", "Female"], [1, 2])
     x = x.replace(["Femoral neck fracture", "Intertrochanteric fracture"], [1, 2])
@@ -64,19 +64,7 @@ if st.button("Submit"):
                              "Sex",
                              "Fracture",
                              "Operation",
-                             "Comorbidities",
-                             "Coronarydisease",
-                             "Cerebrovasculardisease",
-                             "Heartfailure",
-                             "Renalfailure",
-                             "Nephroticsyndrome",
-                             "Respiratorysystemdisease",
-                             "Gastrointestinalbleeding",
-                             "Gastrointestinalulcer",
-                             "Liverfailure",
-                             "Cirrhosis",
-                             "Diabetes",
-                             "Cancer"]]
+                             "Comorbidities"]]
     y_train = y_train0.Deathinhospital
     model = rf_clf.fit(data_train_X, y_train)
     explainer = shap.TreeExplainer(model)
