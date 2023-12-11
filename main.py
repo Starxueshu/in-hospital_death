@@ -34,7 +34,7 @@ Cancer = st.sidebar.selectbox("Cancer", ("No", "Yes"))
 
 
 if st.button("Submit"):
-    rf_clf = jl.load("Xgbc_clf_final_round.pkl")
+    rf_clf = jl.load("Xgbc_clf_final_round-webagain.pkl")
     x = pd.DataFrame([[Age, Sex, Fracture, Operation, Comorbidities, Coronarydisease, Cerebrovasculardisease, Heartfailure, Renalfailure, Nephroticsyndrome, Respiratorysystemdisease, Gastrointestinalbleeding, Gastrointestinalulcer, Liverfailure, Cirrhosis, Diabetes, Cancer]],
                      columns=["Age", "Sex", "Fracture", "Operation", "Comorbidities", "Coronarydisease", "Cerebrovasculardisease", "Heartfailure", "Renalfailure", "Nephroticsyndrome", "Respiratorysystemdisease", "Gastrointestinalbleeding", "Gastrointestinalulcer", "Liverfailure", "Cirrhosis", "Diabetes", "Cancer"])
     x = x.replace(["60-69", "70-79", "80-89", "90-100", ">100"], [6, 7, 8, 9, 10])
